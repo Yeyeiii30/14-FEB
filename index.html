@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz San Valentín ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background: linear-gradient(-45deg, #ff4e88, #ff99ac, #ff2e63, #ff6f91);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    color:white;
+    width:100%;
+    max-width:500px;
+    margin:auto;
+}
+
+h1{
+    font-size:2rem;
+    animation: latido 1s infinite;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+@keyframes latido{
+    0%{ transform:scale(1);}
+    50%{ transform:scale(1.1);}
+    100%{ transform:scale(1);}
+}
+
+p{
+    font-size:1rem;
+    margin-top:10px;
+    padding:0 10px;
+}
+
+.galeria{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.galeria img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(255,255,255,0.8);
+    transition:0.4s;
+}
+
+.galeria img:active{
+    transform:scale(1.1);
+}
+
+button{
+    margin-top:15px;
+    padding:12px 20px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff2e63;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 12px rgba(255,255,255,0.8);
+    width:100%;
+    max-width:250px;
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+.card{
+    margin-top:20px;
+    background:rgba(255,255,255,0.2);
+    padding:15px;
+    border-radius:20px;
+    display:none;
+    animation: aparecer 0.8s ease forwards;
+    font-size:0.95rem;
+}
+
+@keyframes aparecer{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    color:white;
+    animation: float 6s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{ transform: translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform: translateY(-100vh) rotate(360deg); opacity:0; }
+}
+
+@media (max-width:480px){
+    h1{ font-size:1.7rem; }
+    .galeria img{ width:80px; height:80px; }
+    button{ font-size:0.9rem; }
+}
+
+footer{
+    text-align:center;
+    color:white;
+    font-size:0.8rem;
+    opacity:0.9;
+    padding:10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ Feliz San Valentín ❤️</h1>
+
+    <p>
+        Cada momento contigo se convierte en un recuerdo hermoso.
+        Gracias por ser parte de mi vida 💕
+    </p>
+
+<div class="galeria">
+    <img src="https://i.ibb.co/sJXWcqmK/foto1.jpg" alt="Recuerdo 1">
+    <img src="https://i.ibb.co/0yGJ7Rfj/foto2.jpg" alt="Recuerdo 2">
+    <img src="https://i.ibb.co/9Hvny4Yq/foto3.jpg" alt="Recuerdo 3">
+</div>
+
+    <button onclick="mostrarMensaje()">Ábreme 💌</button>
+    <button onclick="mostrarSorpresa()">Te Amo 💖</button>
+
+    <div id="mensaje" class="card">
+        💖 Eres mi regalo favorito de la vida 💖 <br><br>
+        Contigo todo es más bonito, más real, más especial.  
+        No importa el lugar ni el momento, mientras sea contigo todo vale la pena ✨  
+        Gracias por existir y dejarme formar parte de tu mundo 💕
+    </div>
+
+    <div id="sorpresa" class="card">
+        Eres mi persona favorita en este mundo.  
+        Y si pudiera elegir otra vez… te elegiría mil veces más ❤️  
+        Que este día tan especial puedas disfrutarlo al máximo,  
+        y más aún siendo sábado… doble motivo para sonreír, bby ✨💕
+    </div>
+
+</div>
+
+
+<footer>
+© 2026 Yeison A. Polanco 💕 <br>
+Hecho con amor para alguien muy especial.
+</footer>
+
+<script>
+function mostrarMensaje(){
+    const mensaje = document.getElementById("mensaje");
+    mensaje.style.display="block";
+}
+
+function mostrarSorpresa(){
+    const sorpresa = document.getElementById("sorpresa");
+    sorpresa.style.display="block";
+
+    for(let i=0;i<20;i++){
+        crearCorazon();
+    }
+}
+
+function crearCorazon(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+</script>
+
+</body>
+</html>
